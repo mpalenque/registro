@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ranking del Día - Nike Challenge</title>
+    <title>Tabla de Posiciones - Nike Challenge</title>
     <style>
         /* Fuentes personalizadas */
         @font-face {
@@ -17,7 +16,7 @@
             font-display: swap;
         }
         
-        /* Estilos básicos siguiendo index.html */
+        /* Estilos básicos */
         html, body {
             background-color: #000;
             margin: 0;
@@ -26,6 +25,14 @@
             width: 100%;
             overflow-x: hidden;
             color: #E1FF00 !important;
+        }
+        
+        body {
+            background-image: url('./public/bg.png');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
         
         body, button, input, select, textarea, h1, h2, h3, h4, h5, h6, p, span, div, th, td {
@@ -39,60 +46,49 @@
             padding: 20px;
             position: relative;
             z-index: 2;
-            padding-top: calc(8vh + 20px);
-            padding-bottom: calc(20vh + 20px);
-            min-height: calc(100vh - 8vh - 20vh);
+            padding-top: 40px;
+            min-height: calc(100vh - 120px); /* Adjust for footer */
         }
         
-        /* Barras amarillas superior e inferior */
-        .top-bar, .bottom-bar {
-            position: fixed;
-            left: 0;
-            width: 100%;
-            background-color: #E1FF00;
-            z-index: 1;
-        }
-        
-        .top-bar {
-            top: 0;
-            height: 8vh;
-        }
-        
-        .bottom-bar {
-            bottom: 0;
-            height: 20vh;
-        }
-        
-        /* Título en la barra amarilla */
-        .screen-title {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 8vh;
-            background-color: transparent;
-            color: #000 !important;
-            font-weight: bold;
-            font-size: 1.5em;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
+        /* Título */
+        .main-title {
             text-align: center;
-            padding: 0 20px;
-            margin: 0;
+            margin-bottom: 40px;
+            font-size: 1.8em;
+        }
+        
+        /* Table headings outside the table */
+        .table-headers {
+            display: flex;
+            width: 100%;
+            padding: 12px 0;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .header-p {
+            width: 15%;
+            padding-left: 12px;
+        }
+        
+        .header-jugador {
+            width: 55%;
+        }
+        
+        .header-tiempo {
+            width: 30%;
         }
         
         /* Tabla de ranking */
         .ranking-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
-            background-color: #000;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
             border: 1px solid #E1FF00;
+            margin-bottom: 40px;
         }
         
-        .ranking-table th, .ranking-table td {
+        .ranking-table td {
             padding: 12px;
             text-align: left;
             border-bottom: 1px solid #E1FF00;
@@ -100,79 +96,55 @@
             color: #E1FF00 !important;
         }
         
-        .ranking-table th {
-            background-color: #000;
-            font-weight: bold;
-            border-bottom: 2px solid #E1FF00;
-        }
-        
         .ranking-table tr:hover {
-            background-color: #111;
+            background-color: rgba(17, 17, 17, 0.8);
         }
         
         .position {
             font-weight: bold;
         }
         
-        /* Botón de actualización */
-        .refresh-btn {
-            display: block;
-            margin: 20px auto;
-            padding: 10px 20px;
-            background-color: #000;
-            color: #E1FF00 !important;
-            border: 2px solid #E1FF00;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease;
+        /* Player names in white */
+        html body .container .ranking-table tbody tr td.player-name {
+            color: #FFFFFF !important;
         }
         
-        .refresh-btn:hover {
-            background-color: #E1FF00;
-            color: #000 !important;
-        }
-        
-        /* Última actualización */
-        .last-update {
+        /* Footer with image */
+        .footer {
+            width: 100%;
             text-align: center;
-            color: #E1FF00 !important;
-            font-size: 0.9em;
-            margin-bottom: 20px;
+            padding: 20px 0;
+            margin-top: 20px;
+        }
+        
+        .footer img {
+            max-width: 200px;
+            height: auto;
         }
     </style>
 </head>
 <body>
-    <div class="top-bar"></div>
-    <div class="bottom-bar"></div>
-    
-    <h1 class="screen-title">RANKING DEL DÍA</h1>
-    
     <div class="container">
-        <p class="last-update">Última actualización: <span id="lastUpdateTime">-</span></p>
-        <button class="refresh-btn" onclick="loadRanking()">ACTUALIZAR RANKING</button>
+        <h1 class="main-title">TABLA DE POSICIONES</h1>
+        
+        <div class="table-headers">
+            <div class="header-p">P</div>
+            <div class="header-jugador">JUGADOR</div>
+            <div class="header-tiempo">TIEMPO</div>
+        </div>
+        
         <table class="ranking-table">
-            <thead>
-                <tr>
-                    <th>POSICIÓN</th>
-                    <th>JUGADOR</th>
-                    <th>TIEMPO TOTAL</th>
-                    <th>EDAD</th>
-                    <th>INTERESES</th>
-                </tr>
-            </thead>
             <tbody id="rankingBody">
                 <!-- Data will be inserted here -->
             </tbody>
         </table>
+        
+        <div class="footer">
+            <img src="./public/madvoltage.png" alt="Mad Voltage" />
+        </div>
     </div>
 
     <script>
-        function updateLastUpdateTime() {
-            const now = new Date();
-            document.getElementById('lastUpdateTime').textContent = 
-                now.toLocaleTimeString();
-        }
-
         function formatTime(timeStr) {
             if (!timeStr || timeStr === "00:00:00.000") return "NO COMPLETADO";
             return timeStr;
@@ -199,7 +171,8 @@
                         const timeA = a.challengeResults.totalTime;
                         const timeB = b.challengeResults.totalTime;
                         return timeA.localeCompare(timeB);
-                    });
+                    })
+                    .slice(0, 10); // Limit to top 10 players
 
                 const tbody = document.getElementById('rankingBody');
                 tbody.innerHTML = '';
@@ -207,17 +180,12 @@
                 todayPlayers.forEach((player, index) => {
                     const row = document.createElement('tr');
                     row.innerHTML = `
-                        <td class="position">#${index + 1}</td>
-                        <td>${player.playerData.playerName}</td>
+                        <td class="position">${index + 1}</td>
+                        <td class="player-name">${player.playerData.playerName}</td>
                         <td>${formatTime(player.challengeResults.totalTime)}</td>
-                        <td>${player.playerData.age === 'menor' ? 'MENOR DE 12' : 'MAYOR DE 12'}</td>
-                        <td>${player.playerData.interests.join(', ') || '-'}</td>
                     `;
                     tbody.appendChild(row);
                 });
-
-                // Update last update time
-                updateLastUpdateTime();
 
             } catch (error) {
                 console.error('Error loading ranking:', error);

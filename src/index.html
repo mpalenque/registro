@@ -1115,15 +1115,15 @@ function updateTimer() {
     
                 // Then try to send email
                 const emailContent = `
-                    <h2>Resultados del Desafío Nike</h2>
-                    <p>Jugador: ${playerName}</p>
-                    <p>Tiempo Total: ${challengeResults.totalTime}</p>
-                    <p>Tiempos por desafío:</p>
-                    <ul>
-                        <li>Desafío 1: ${times[1]}</li>
-                        <li>Desafío 2: ${times[2]}</li>
-                        <li>Desafío 3: ${times[3]}</li>
-                    </ul>
+                    <div style="width: 100%; max-width: 600px; margin: 0 auto;">
+                        <img src="https://mpalenque.github.io/registro/src/public/header2.jpg" style="width: 100%; height: auto;" alt="Header">
+                        <div style="padding: 20px; text-align: center; font-family: 'Helvetica', sans-serif; font-size: 32px;">
+                            <p>Jugador: ${playerName}</p>
+                            <p>${challengeResults.totalTime}</p>
+                            <p>ESTE FUE TU TIEMPO LOGRADO</p>
+                        </div>
+                        <img src="https://mpalenque.github.io/registro/src/public/footer2.jpg" style="width: 100%; height: auto;" alt="Footer">
+                    </div>
                 `;
     
                 await fetch('/api/sendEmail', {

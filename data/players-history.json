@@ -778,5 +778,43 @@
       },
       "totalTime": "00:00:00.000"
     }
+  },
+  {
+    "timestamp": "2025-02-28T18:57:52.204Z",
+    "playerData": {
+      "playerName": "ASD",
+      "email": "MPalenque@gmail.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": []
+    },
+    "challengeResults": {
+      "times": {
+        "1": 0,
+        "2": "00:00:02.061",
+        "3": 0
+      },
+      "totalTime": "00:00:02.060"
+    }
+  },
+  {
+    "timestamp": "2025-02-28T19:01:07.336Z",
+    "playerData": {
+      "playerName": "asd",
+      "email": "mpalenque@gmail.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": [
+        "basket"
+      ]
+    },
+    "challengeResults": {
+      "times": {
+        "1": 0,
+        "2": "00:00:01.711",
+        "3": 0
+      },
+      "totalTime": "00:00:01.710"
+    }
   }
 ]

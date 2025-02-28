@@ -1,0 +1,38 @@
+%!Adobe-FontList 1.24
+%Locale:0x409
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:/Users/john.akiraharrold/Documents/GFB/HO24_Max Voltage/GRFX and LAYOUTS/HO24_MaxVoltage_Layouts_FINAL copy Folder/Document fonts/AdobeFnt24.lst
+FileLength:750
+FileModTime:747187419
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:HelveticaMonospacedPro-Rg
+FamilyName:Helvetica Monospaced Pro
+StyleName:Regular
+MenuName:Helvetica Monospaced Pro
+StyleBits:0
+WeightClass:400
+WidthClass:5
+AngleClass:0
+FullName:Helvetica Monospaced Pro
+WritingScript:Roman
+OutlineFileName:/Users/john.akiraharrold/Documents/GFB/HO24_Max Voltage/GRFX and LAYOUTS/HO24_MaxVoltage_Layouts_FINAL copy Folder/Document fonts/HelveticaMonospacedPro-Rg.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+hasSVG:no
+hasSBIX:no
+hasCOLR:no
+VariableFontType:NonVariableFont
+FileLength:45164
+FileModTime:298508834
+NameArray:0,Mac,4,Helvetica Monospaced Pro
+NameArray:0,Win,1,Helvetica Monospaced Pro
+%EndFont
+
