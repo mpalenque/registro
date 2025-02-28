@@ -615,7 +615,7 @@ body * {
 
 <!-- Pantalla 2 - Registro -->
 <div id="screen2" class="screen">
-    <h2>DATOS DEL JUGADOR</h2>
+    <h2>NOMBRE JUGADOR</h2>
     <form id="registrationForm" onsubmit="event.preventDefault(); showScreen('screen3');">
         <div class="form-group">
             <label>Nombre y apellido:</label>
@@ -678,8 +678,7 @@ body * {
 <!-- Pantalla 3 - Menú Principal -->
 <div id="screen3" class="screen">
     <div class="screen-content">
-        <h2>MENÚ PRINCIPAL</h2>
-        <div id="playerName"></div>
+        <div id="playerName" style="color: white; font-size: 24px; text-align: center; margin-bottom: 20px;"></div>
         
         <div class="challenges-container">
             <div class="challenge-box">
@@ -702,9 +701,9 @@ body * {
         </div>
     
         <div class="total-time">
-            <div class="total-time-container">
+            <div class="total-time-container" style="position: relative;">
                 <img src="./public/tiempototal.svg" alt="Tiempo Total" class="total-time-svg"/>
-                <div id="totalTime" class="total-time-counter">00:00:00.000</div>
+                <div id="totalTime" class="total-time-counter" style="position: absolute; top: 60%; left: 50%; transform: translate(-50%, -50%);">00:00:00.000</div>
             </div>
         </div>
     
@@ -746,6 +745,12 @@ body * {
        function showScreen(screenId) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById(screenId).classList.add('active');
+    
+    // Display the player name when showing screen3
+    if (screenId === 'screen3') {
+        const playerName = document.querySelector('#registrationForm input[type="text"]').value;
+        document.getElementById('playerName').textContent = playerName;
+    }
     
     // Reiniciar la animación del SVG cuando se regresa a screen1
     if (screenId === 'screen1') {
