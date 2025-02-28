@@ -760,5 +760,23 @@
       },
       "totalTime": "00:00:00.000"
     }
+  },
+  {
+    "timestamp": "2025-02-28T18:42:31.531Z",
+    "playerData": {
+      "playerName": "sd",
+      "email": "mpalenque@gmail.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": []
+    },
+    "challengeResults": {
+      "times": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      },
+      "totalTime": "00:00:00.000"
+    }
   }
 ]
