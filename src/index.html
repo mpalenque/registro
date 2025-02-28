@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Juego de Desafíos</title>
+    
+        <script type="module" src="js/networkStatus.js"></script>
+    
+        <style>
+      /* Estilos básicos */
+.screen { 
+    display: none; 
+    background-color: #000;
+    padding: 20px;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.active { display: block; }
+
+button { 
+    margin: 5px; 
+    padding: 8px; 
+    border-radius: 0 !important; /* Hacer todos los botones cuadrados */
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.timer { font-family: monospace; color: #E1FF00; }
+
+.challenge-box { 
+    border: 1px solid #E1FF00; 
+    padding: 10px; 
+    margin: 10px; 
+}
+
+.goal-btn { 
+    background-color: #000; 
+    color: #E1FF00;
+    border: 1px solid #E1FF00;
+}
+
+.goal-btn.active { 
+    background-color: #E1FF00; 
+    color: #000; 
+}
+
+/* Indicador de estado de red */
+.status-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ccc;
+}
+
+.status-indicator.online { background-color: #4CAF50; }
+.status-indicator.offline { background-color: #f44336; }
+
+/* Estilos de formularios */
+.form-group { 
+    margin-bottom: 20px; 
+}
+
+.form-group label { 
+    display: block; 
+    margin-bottom: 8px; 
+    font-weight: bold; 
+    color: #E1FF00 !important;
+}
+
+.radio-group, .checkbox-group { 
+    margin-left: 20px; 
+}
+
+.radio-group label, .checkbox-group label { 
+    display: flex;
+    align-items: center; 
+    margin-bottom: 5px;
+    color: #E1FF00 !important;
+}
+
+.radio-group input, .checkbox-group input { 
+    margin-right: 5px; 
+}
+
+input[type="text"], input[type="email"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #E1FF00;
+    color: #E1FF00 !important;
+    background-color: transparent;
+    border-radius: 0;
+}
+
+/* Estilos para el diseño de Nike */
+.ipad-1 {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ipad-1-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8vh; /* Tamaño relativo para iPad */
+    background-color: #e1ff00;
+}
+
+.path-2-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    width: 40%;
+    max-width: 300px;
+    height: auto;
+    opacity: 0;
+    transition: opacity 1s, transform 1s;
+}
+
+.path-2-icon.animate {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+}
+
+.nuevo-jugador {
+    position: absolute;
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    width: 250px;
+    height: 45px;
+    margin-bottom: 20px;
+}
+
+.nuevo-jugador-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40.7px;
+    background-color: #e1ff00;
+}
+
+.nuevo-jugador-item {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 6.06px;
+    height: 40.7px;
+    background-color: #fff;
+}
+
+.nuevo-jugador1 {
+    position: relative;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    padding-top: 12px;
+    z-index: 1;
+    color: #000 !important;
+}
+
+.nuevo-jugador1 span {
+    color: #000 !important;
+}
+
+.v {
+    letter-spacing: 0.01em;
+}
+
+/* Estilo para checkboxes personalizados */
+.checkbox-group input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    border: 2px solid #E1FF00;
+    background-color: transparent;
+    margin-right: 10px;
+    position: relative;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"]:checked {
+    background-color: black;
+}
+
+.checkbox-group input[type="checkbox"]:checked::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 3px;
+    width: 6px;
+    height: 11px;
+    border: solid #E1FF00;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Estilo para radio buttons personalizados */
+.radio-group input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    border: 2px solid #E1FF00;
+    background-color: transparent;
+    margin-right: 10px;
+    position: relative;
+    vertical-align: middle;
+    cursor: pointer;
+    border-radius: 0 !important;
+}
+
+.radio-group input[type="radio"]:checked {
+    background-color: black;
+}
+
+.radio-group input[type="radio"]:checked::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 7px;
+    width: 6px;
+    height: 6px;
+    background-color: #E1FF00;
+    border-radius: 0;
+}
+
+/* Fuentes personalizadas */
+@font-face {
+    font-family: 'HelveticaMonospacedPro';
+    src: url('./fonts/HelveticaMonospacedPro-Rg.woff2') format('woff2'),
+         url('./fonts/HelveticaMonospacedPro-Rg.woff') format('woff'),
+         url('./fonts/HelveticaMonospacedPro-Rg.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body, button, input, select, textarea, h1, h2, h3, h4, h5, h6, p, span, div {
+    font-family: 'HelveticaMonospacedPro', monospace !important;
+}
+
+/* Color de texto global - añadir después de las definiciones de fuente */
+body, h1, h2, h3, h4, h5, h6, p, span, div, label, input {
+    color: #E1FF00 !important;
+}
+
+/* Excepciones para los botones específicos */
+button.nuevo-jugador .nuevo-jugador1,
+button.nuevo-jugador .nuevo-jugador1 *,
+button.nuevo-jugador .nuevo-jugador1 span {
+    color: #000 !important;
+}
+
+/* Estilos para botones de acción */
+button[onclick*="screen1"],
+button[onclick="showScreen('screen3')"] {
+    background-color: #E1FF00 !important;
+    color: #000 !important;
+    border: 2px solid #000 !important;
+}
+
+/* Estilo para botones de acción principal */
+button[type="submit"],
+button[onclick="registerChallenge()"],
+button[onclick="savePlayerData()"] {
+    background-color: #000 !important;
+    color: #E1FF00 !important;
+    border: 2px solid #E1FF00 !important;
+    font-weight: bold;
+    padding: 10px 20px !important;
+}
+
+/* Fondo negro para toda la página, sin margen y sin bordes blancos */
+html, body {
+    background-color: #000;
+    margin: 0;
+    padding: 0;
+    overflow: hidden !important; /* Evitar scroll general - forzado */
+    height: 100%;
+    width: 100%;
+    position: fixed; /* Fijar el body para evitar scroll */
+}
+
+/* Asegurar que la pantalla 1 no tenga los recuadros amarillos */
+#screen1 {
+    background-color: #000;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#screen1.active {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Asegurar explícitamente que los pseudoelementos no aparezcan en screen1 */
+#screen1::before,
+#screen1::after {
+    display: none !important;
+    content: none !important;
+}
+
+/* Bordes amarillos para todas las pantallas excepto screen1, con medidas relativas */
+.screen:not(#screen1) {
+    position: fixed;
+    padding-top: calc(8vh + 20px); /* ~8% de la altura para el borde superior + padding */
+    padding-bottom: calc(20vh + 20px); /* ~20% de la altura para el borde inferior + padding */
+    overflow-y: auto; /* Permitir scroll interno */
+    overflow-x: hidden;
+}
+
+.screen:not(#screen1)::before,
+.screen:not(#screen1)::after {
+    content: '';
+    position: fixed;
+    left: 0;
+    width: 100%;
+    background-color: #E1FF00;
+    z-index: 1; /* Cambiar a 1 para estar por delante del fondo negro */
+    pointer-events: none;
+}
+
+.screen:not(#screen1)::before {
+    top: 0;
+    height: 8vh; /* ~8% de la altura de la ventana (equivalente a 67.4px) */
+}
+
+.screen:not(#screen1)::after {
+    bottom: 0;
+    height: 20vh; /* ~20% de la altura de la ventana (equivalente a 169.2px) */
+}
+
+/* Asegurar que el contenido de las pantallas esté por encima de las barras amarillas */
+.screen:not(#screen1) > * {
+    position: relative;
+    z-index: 2; /* Mayor que el z-index de las barras amarillas */
+}
+
+/* Oculta el icono de estado de red en screen1 para una vista más limpia */
+#screen1.active + #networkStatus {
+    display: none;
+}
+
+/* Estilos de la pantalla del challenge para que use todo el espacio */
+#challengeScreen, #screen2, #screen3 {
+    min-height: calc(100vh - 8vh - 20vh);
+    box-sizing: border-box;
+}
+
+/* Ajustar elementos para la visualización correcta */
+#networkStatus {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 9999; /* Asegurar que está siempre visible */
+}
+
+/* Estilos específicos para el formulario en screen2 */
+.horizontal-radio, .horizontal-checkbox {
+    display: flex;
+    gap: 20px; /* Espacio entre elementos */
+    flex-wrap: wrap;
+}
+
+.horizontal-radio label, .horizontal-checkbox label {
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.two-column-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+/* Para pantallas pequeñas */
+@media (max-width: 768px) {
+    .two-column-group {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Alinear los botones del formulario */
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+/* Ajustar el ancho del formulario */
+#registrationForm {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Más espacio para las opciones de radio */
+.radio-group label, .checkbox-group label {
+    margin-bottom: 10px;
+}
+
+/* Eliminar todo desbordamiento inesperado */
+body * {
+    max-width: 100%;
+}
+
+/* Contenedor para el contenido scrollable dentro de cada pantalla */
+.screen-content {
+    position: relative;
+    z-index: 2;
+    height: calc(100vh - 8vh - 20vh);
+    overflow-y: auto;
+    padding: 20px 0;
+    -webkit-overflow-scrolling: touch; /* Mejor scroll en dispositivos iOS */
+}
+
+/* Contenedor para los tres desafíos en horizontal */
+.challenges-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 30px 0;
+}
+
+/* En dispositivos pequeños, apilar verticalmente */
+@media (max-width: 768px) {
+    .challenges-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Estilos para los cuadros de desafío */
+.challenge-box {
+    border: 1px solid #E1FF00;
+    padding: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 120px;
+}
+
+.challenge-box h3 {
+    margin-top: 0;
+    border-bottom: 1px solid #E1FF00;
+    padding-bottom: 10px;
+}
+
+.challenge-box button {
+    margin: 10px 0;
+    background-color: #000;
+    color: #E1FF00;
+    border: 1px solid #E1FF00;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.challenge-box button:hover {
+    background-color: #E1FF00;
+    color: #000;
+}
+
+/* Sección del tiempo total */
+.total-time {
+    margin: 30px 0;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+/* Ajustar los botones al mismo estilo que screen2 */
+#screen3 .form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+/* Ajustes para la pantalla de desafíos */
+#challengeScreen {
+    text-align: center;
+}
+
+#challengeScreen h2 {
+    margin-bottom: 20px;
+}
+
+#challengeScreen .timer {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+}
+
+#challengeControls {
+    margin: 30px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+#challengeScreen button {
+    margin: 10px;
+    min-width: 120px;
+}
+
+/* Estilo específico para los botones de cancelar y registrar en la pantalla de desafíos */
+#challengeScreen button[onclick="cancelChallenge()"] {
+    background-color: #E1FF00 !important;
+    color: #000 !important;
+    border: 2px solid #000 !important;
+    font-weight: bold;
+    padding: 10px 20px !important;
+}
+
+/* Estilo específico para los botones de iniciar desafío */
+.challenge-box button[onclick^="startChallenge"] {
+    background-color: #000;
+    color: #E1FF00;
+    border: 2px solid #E1FF00;
+}
+
+.challenge-box button[onclick^="startChallenge"]:hover {
+    background-color: #E1FF00;
+    color: #000;
+    border: 2px solid #E1FF00;
+}
+
+#challengeControls button:not(.goal-btn) {
+    background-color: #000;
+    color: #E1FF00;
+    border: 2px solid #E1FF00;
+    font-weight: bold;
+    padding: 8px 15px;
+    min-width: 120px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#challengeControls button:not(.goal-btn):hover {
+    background-color: #E1FF00;
+    color: #000;
+    border: 2px solid #E1FF00;
+}
+
+/* Asegurar que todos los desafíos tengan el mismo tamaño */
+.challenge-box {
+    border: 2px solid #E1FF00;
+    padding: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 120px;
+}
+
+        </style>
+    </head>
+<body>
+    <!-- Pantalla 1 - Inicio -->
+    <div id="screen1" class="screen active">
+        <div class="ipad-1">
+            <div class="ipad-1-child"></div>
+            <img
+                class="path-2-icon"
+                alt=""
+                src="./public/path-2.svg"
+                data-animate-on-scroll
+            />
+            <button class="nuevo-jugador" id="nuevoJugadorBtn" onclick="showScreen('screen2')">
+                <div class="nuevo-jugador-child"></div>
+                <div class="nuevo-jugador-item"></div>
+                <div class="nuevo-jugador1">NUE<span class="v">V</span>O JUGADOR</div>
+            </button>
+        </div>
+    </div>
+
+    <!-- Pantalla 2 - Registro -->
+   <!-- Reemplazar la pantalla screen2 actual con este código -->
+
+<!-- Pantalla 2 - Registro -->
+<div id="screen2" class="screen">
+    <h2>DATOS DEL JUGADOR</h2>
+    <form id="registrationForm" onsubmit="event.preventDefault(); showScreen('screen3');">
+        <div class="form-group">
+            <label>Nombre y apellido:</label>
+            <input type="text" required>
+        </div>
+
+        <div class="form-group">
+            <label>Correo electrónico:</label>
+            <input type="email" required>
+        </div>
+
+        <div class="form-group">
+            <label>Edad:</label>
+            <div class="radio-group horizontal-radio">
+                <label><input type="radio" name="age" value="menor" required> Menor de 12</label>
+                <label><input type="radio" name="age" value="mayor"> Mayor de 12</label>
+            </div>
+        </div>
+
+        <div class="two-column-group">
+            <div class="form-group">
+                <label>¿Usa botines Nike?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="nikeUsage" value="si" required> SI</label>
+                    <label><input type="radio" name="nikeUsage" value="no"> NO</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>¿JUEGA AL FÚTBOL?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="footballFrequency" value="weekly" required> Una vez por semana</label>
+                    <label><input type="radio" name="footballFrequency" value="habitually"> Habitualmente</label>
+                    <label><input type="radio" name="footballFrequency" value="rarely"> Con poca frecuencia</label>
+                    <label><input type="radio" name="footballFrequency" value="never"> No practico</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>OTROS INTERESES</label>
+            <div class="checkbox-group horizontal-checkbox">
+                <label><input type="checkbox" value="running"> Running</label>
+                <label><input type="checkbox" value="training"> Training</label>
+                <label><input type="checkbox" value="lifestyle"> Lifestyle</label>
+                <label><input type="checkbox" value="basket"> Basket</label>
+            </div>
+        </div>
+
+        <div class="form-buttons">
+            <button type="button" onclick="showScreen('screen1')">Volver</button>
+            <button type="submit">Jugar</button>
+        </div>
+    </form>
+</div>
+
+        <!-- Pantalla 3 - Menú Principal -->
+      <!-- Reemplazar la pantalla 3 actual por este código -->
+
+<!-- Pantalla 3 - Menú Principal -->
+<div id="screen3" class="screen">
+    <div class="screen-content">
+        <h2>MENÚ PRINCIPAL</h2>
+        <div id="playerName"></div>
+        
+        <div class="challenges-container">
+            <div class="challenge-box">
+                <h3>DESAFÍO 1</h3>
+                <button onclick="startChallenge(1)">Iniciar</button>
+                <div class="timer" id="time1">00:00:00.000</div>
+            </div>
+    
+            <div class="challenge-box">
+                <h3>DESAFÍO 2</h3>
+                <button onclick="startChallenge(2)">Iniciar</button>
+                <div class="timer" id="time2">00:00:00.000</div>
+            </div>
+    
+            <div class="challenge-box">
+                <h3>DESAFÍO 3</h3>
+                <button onclick="startChallenge(3)">Iniciar</button>
+                <div class="timer" id="time3">00:00:00.000</div>
+            </div>
+        </div>
+    
+        <div class="total-time">
+            <div class="total-time-container">
+                <img src="./public/tiempototal.svg" alt="Tiempo Total" class="total-time-svg"/>
+                <div id="totalTime" class="total-time-counter">00:00:00.000</div>
+            </div>
+        </div>
+    
+        <div class="form-buttons">
+            <button type="button" onclick="showScreen('screen1')">Volver</button>
+            <button onclick="savePlayerData()">Finalizar y Registrar</button>
+        </div>
+    </div>
+</div>
+    
+        <!-- Pantallas de Desafíos -->
+        <div id="challengeScreen" class="screen">
+            <h2 id="challengeTitle"></h2>
+            <div class="timer" id="currentTimer">00:00:00.000</div>
+            
+            <div id="challengeControls">
+                <!-- Controles específicos para cada desafío -->
+            </div>
+    
+            <button onclick="cancelChallenge()">Cancelar</button>
+            <button onclick="registerChallenge()">Registrar</button>
+        </div>
+    
+    <script>
+        // let currentChallenge = 1; // This line is removed because it's a duplicate
+        let startTime;
+        let interval;
+        let times = {1: 0, 2: 0, 3: 0};
+        let bonus = 0;
+        let goalButtons = {1: false, 2: false};
+        let challenge3Selection = null;
+        let initialElapsed = 0;
+        
+
+
+
+
+        
+       function showScreen(screenId) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById(screenId).classList.add('active');
+    
+    // Reiniciar la animación del SVG cuando se regresa a screen1
+    if (screenId === 'screen1') {
+        const svgElement = document.querySelector('.path-2-icon');
+        if (svgElement) {
+            svgElement.classList.remove('animate');
+            
+            // Forzar un reflow para que la eliminación de la clase sea efectiva
+            // eslint-disable-next-line no-unused-expressions
+            void svgElement.offsetWidth;
+            
+            // Reobservar el elemento para que se anime de nuevo
+            observer.observe(svgElement);
+        }
+    }
+    
+    // Prepare OSC message based on screen and challenge
+    let oscMessage = screenId;
+    if (screenId === 'challengeScreen') {
+        oscMessage = `desafio${currentChallenge}`;
+    }
+    
+    // Send OSC message for screen change
+    fetch('/api/sendOSC', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            address: '/estado/',
+            message: oscMessage
+        })
+    });
+}
+        
+        function startChallenge(num) {
+    currentChallenge = num;
+    document.getElementById('challengeTitle').textContent = `DESAFÍO ${num}`;
+    showScreen('challengeScreen');
+    resetChallenge();
+    
+    const controls = document.getElementById('challengeControls');
+    if (num === 3) {
+        controls.innerHTML = `
+            <button onclick="setChallenge3Bonus(0)" class="goal-btn">0 goles</button>
+            <button onclick="setChallenge3Bonus(-5)" class="goal-btn">1 gol</button>
+            <button onclick="setChallenge3Bonus(-10)" class="goal-btn">2 goles</button>
+            <button onclick="setChallenge3Bonus(-15)" class="goal-btn">3 goles</button>`;
+    } else {
+        controls.innerHTML = `
+            <button onclick="toggleTimer()" id="playStopBtn">INICIAR</button>
+            <button onclick="toggleGoal(${num})" id="goal${num}" class="goal-btn">GOL</button>`;
+    }
+}
+        
+function toggleTimer() {
+    const playStopBtn = document.getElementById('playStopBtn');
+    
+    if (!interval) {
+        // Iniciar el temporizador
+        startTime = Date.now() - initialElapsed;
+        interval = setInterval(updateTimer, 10);
+        playStopBtn.textContent = "PAUSA";
+    } else {
+        // Detener el temporizador
+        clearInterval(interval);
+        interval = null;
+        initialElapsed = Date.now() - startTime;
+        playStopBtn.textContent = "REANUDAR";
+    }
+}
+    
+   // Modificar la función toggleGoal existente en la línea 242
+function toggleGoal(challengeNum) {
+    const btn = document.getElementById(`goal${challengeNum}`);
+    if (!goalButtons[challengeNum]) {
+        goalButtons[challengeNum] = true;
+        bonus = 3000;
+        btn.classList.add('active');
+    } else {
+        goalButtons[challengeNum] = false;
+        bonus = 0;
+        btn.classList.remove('active');
+    }
+    
+    if (interval) {
+        updateTimer(); // Esto actualizará la pantalla y enviará el mensaje OSC
+    } else {
+        // Calcular tiempo con bonificación para mostrar
+        const total = initialElapsed - bonus;
+        const updatedTime = new Date(total).toISOString().substr(11, 12);
+        document.getElementById('currentTimer').textContent = updatedTime;
+        
+        // Actualizar la pantalla de tiempo del desafío
+        times[challengeNum] = updatedTime;
+        document.getElementById(`time${challengeNum}`).textContent = updatedTime;
+        updateTotalTime();
+        
+        // Enviar actualización OSC inmediata cuando el temporizador no está corriendo
+        sendTimerOscUpdate();
+    }
+}
+        
+function setChallenge3Bonus(value) {
+    document.querySelectorAll('#challengeControls .goal-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    event.target.classList.add('active');
+    
+    challenge3Selection = value;
+    bonus = Math.abs(value) * 1000;
+    
+    // Set timer display based on goals
+    let timeDisplay = '00:00:00.000';
+    if (value === -5) timeDisplay = '-00:00:05.000';
+    if (value === -10) timeDisplay = '-00:00:10.000';
+    if (value === -15) timeDisplay = '-00:00:15.000';
+    document.getElementById('currentTimer').textContent = timeDisplay;
+    
+    // Actualizar el valor de tiempo del desafío 3 en la interfaz
+    document.getElementById('time3').textContent = timeDisplay;
+    
+    // Actualizar el tiempo total
+    updateTotalTime();
+    
+    // Enviar mensaje OSC con los valores actualizados
+    sendTimerOscUpdate();
+}
+    
+        function timeToMs(timeStr) {
+    const isNegative = timeStr.startsWith('-');
+    const cleanStr = isNegative ? timeStr.substring(1) : timeStr;
+    const [hh, mm, ss, ms] = cleanStr.split(/[:.]/).map(Number);
+    const timeMs = ((hh * 3600 + mm * 60 + ss) * 1000) + ms;
+    return isNegative ? -timeMs : timeMs;
+}
+
+function msToTimeString(ms) {
+    const isNegative = ms < 0;
+    const absMs = Math.abs(ms);
+    const timeStr = new Date(absMs).toISOString().substr(11, 12);
+    return isNegative ? `-${timeStr}` : timeStr;
+}
+
+// Reemplazar la función sendTimerOscUpdate que comienza en la línea 290
+function sendTimerOscUpdate() {
+    // Obtener valores actuales de los tiempos
+    const timer1 = document.getElementById('time1').textContent || '00:00:00.000';
+    const timer2 = document.getElementById('time2').textContent || '00:00:00.000';
+    const timer3 = document.getElementById('time3').textContent || '00:00:00.000';
+    const currentTimer = document.getElementById('currentTimer').textContent;
+
+    let adjustedTimer1 = timer1;
+    let adjustedTimer2 = timer2;
+    let adjustedTimer3 = timer3;
+
+    // Para desafío 1 activo, usar el tiempo actual con bono aplicado
+    if (currentChallenge === 1) {
+        adjustedTimer1 = currentTimer;
+        // Si timer1 no está establecido aún (porque no se ha registrado), también actualizar el valor mostrado
+        if (timer1 === '00:00:00.000') {
+            document.getElementById('time1').textContent = currentTimer;
+        }
+    }
+    
+    // Para desafío 2 activo, usar el tiempo actual con bono aplicado
+    if (currentChallenge === 2) {
+        adjustedTimer2 = currentTimer;
+        // Si timer2 no está establecido aún (porque no se ha registrado), también actualizar el valor mostrado
+        if (timer2 === '00:00:00.000') {
+            document.getElementById('time2').textContent = currentTimer;
+        }
+    }
+    
+    // Para desafío 3 activo, usar el tiempo actual con bono aplicado (siempre negativo)
+    if (currentChallenge === 3) {
+        adjustedTimer3 = currentTimer;
+        // Si timer3 no está establecido aún (porque no se ha registrado), también actualizar el valor mostrado
+        if (timer3 === '00:00:00.000') {
+            document.getElementById('time3').textContent = currentTimer;
+        }
+    }
+
+    // Calcular tiempo total con todos los bonos aplicados
+    let totalMs = 0;
+    
+    // Sumar el tiempo del desafío 1 (si existe)
+    if (adjustedTimer1 && adjustedTimer1 !== '00:00:00.000') {
+        totalMs += timeToMs(adjustedTimer1);
+    }
+    
+    // Sumar el tiempo del desafío 2 (si existe)
+    if (adjustedTimer2 && adjustedTimer2 !== '00:00:00.000') {
+        totalMs += timeToMs(adjustedTimer2);
+    }
+    
+    // Restar el tiempo del desafío 3 (si existe y es negativo)
+    if (adjustedTimer3 && adjustedTimer3 !== '00:00:00.000') {
+        const timer3Ms = timeToMs(adjustedTimer3);
+        // Si el tiempo es negativo (con - al inicio), lo aplicamos como una bonificación (restando su valor absoluto)
+        if (adjustedTimer3.startsWith('-')) {
+            totalMs -= Math.abs(timer3Ms);
+        }
+    }
+
+    const adjustedTotal = Math.max(0, totalMs);
+    const totalTimeString = msToTimeString(adjustedTotal);
+
+    // Enviar mensaje OSC con valores ajustados correctamente
+    fetch('/api/sendOSC', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            address: '/timers/',
+            message: JSON.stringify({
+                timer1: adjustedTimer1,
+                timer2: adjustedTimer2,
+                timer3: adjustedTimer3,
+                currentTimer: currentTimer,
+                total: totalTimeString
+            })
+        })
+    });
+    
+    console.log("OSC Message sent:", {
+        timer1: adjustedTimer1,
+        timer2: adjustedTimer2,
+        timer3: adjustedTimer3,
+        currentTimer: currentTimer,
+        total: totalTimeString
+    });
+}
+// Agregar después de la función sendTimerOscUpdate, aproximadamente línea 355
+
+function updateTimer() {
+    const elapsed = Date.now() - startTime;
+    const total = elapsed - bonus;
+    const timeString = new Date(total).toISOString().substr(11, 12);
+    document.getElementById('currentTimer').textContent = timeString;
+
+    // Actualizar pantalla de tiempo del desafío
+    if (currentChallenge) {
+        times[currentChallenge] = timeString;
+        document.getElementById(`time${currentChallenge}`).textContent = timeString;
+        updateTotalTime();
+    }
+    
+    // Enviar actualización OSC usando la función común
+    sendTimerOscUpdate();
+}
+
+
+
+
+        function cancelChallenge() {
+            clearInterval(interval);
+            interval = null;
+            bonus = 0;
+            showScreen('screen3');
+        }
+        
+        function registerChallenge() {
+            const time = document.getElementById('currentTimer').textContent;
+            times[currentChallenge] = time;
+            document.getElementById(`time${currentChallenge}`).textContent = time;
+            updateTotalTime();
+            goalButtons[currentChallenge] = false;
+            challenge3Selection = null;
+            showScreen('screen3');
+        }
+        
+        function updateTotalTime() {
+            const total = Object.entries(times).reduce((acc, [challenge, t]) => {
+                if (!t) return acc;
+                const parts = t.split(/[:.]/).map(Number);
+                const timeInSeconds = parts[0] * 3600 + parts[1] * 60 + parts[2] + (parts[3] || 0) / 1000;
+                // Subtract time for challenge 3, add time for other challenges
+                return challenge === '3' ? acc - timeInSeconds : acc + timeInSeconds;
+            }, 0);
+            
+            // Ensure total doesn't go below zero
+            const adjustedTotal = Math.max(0, total);
+            
+            const hours = Math.floor(adjustedTotal / 3600).toString().padStart(2, '0');
+            const minutes = Math.floor((adjustedTotal % 3600) / 60).toString().padStart(2, '0');
+            const seconds = Math.floor(adjustedTotal % 60).toString().padStart(2, '0');
+            const milliseconds = Math.floor((adjustedTotal % 1) * 1000).toString().padStart(3, '0');
+            
+            document.getElementById('totalTime').textContent = `${hours}:${minutes}:${seconds}.${milliseconds}`;
+        }
+        
+        function resetChallenge() {
+            clearInterval(interval);
+            interval = null;
+            bonus = 0;
+            initialElapsed = 0;
+            challenge3Selection = null;
+            document.getElementById('currentTimer').textContent = '00:00:00.000';
+        }
+    
+        function resetAllChallenges() {
+            // Reset all timers
+            times = {
+                1: 0,
+                2: 0,
+                3: 0
+            };
+            
+            // Reset timer displays
+            document.getElementById('totalTime').textContent = '00:00:00.000';
+            document.querySelectorAll('.timer').forEach(timer => {
+                timer.textContent = '00:00:00.000';
+            });
+    
+            // Reset goal buttons
+            document.querySelectorAll('.goal-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+    
+            // Reset form
+            document.getElementById('registrationForm').reset();
+    
+            // Reset challenge states
+            goalButtons = {1: false, 2: false};
+            challenge3Selection = null;
+            bonus = 0;
+            initialElapsed = 0;
+    
+            // Clear any running interval
+            if (interval) {
+                clearInterval(interval);
+                interval = null;
+            }
+        }
+    
+        async function savePlayerData() {
+            const playerName = document.querySelector('#registrationForm input[type="text"]').value;
+            const email = document.querySelector('#registrationForm input[type="email"]').value;
+            const age = document.querySelector('#registrationForm input[name="age"]:checked').value;
+            const nikeUsage = document.querySelector('#registrationForm input[name="nikeUsage"]:checked').value;
+            const footballFrequency = document.querySelector('#registrationForm input[name="footballFrequency"]:checked').value;
+            const interests = Array.from(document.querySelectorAll('#registrationForm input[type="checkbox"]:checked'))
+                .map(cb => cb.value);
+            
+            const challengeResults = {
+                times,
+                totalTime: document.getElementById('totalTime').textContent
+            };
+    
+            try {
+                // First save player data
+                const saveResponse = await fetch('/api/savePlayerData', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        playerName, 
+                        email, 
+                        age, 
+                        nikeUsage, 
+                        footballFrequency, 
+                        interests, 
+                        challengeResults 
+                    })
+                });
+    
+                if (!saveResponse.ok) {
+                    throw new Error('Failed to save player data');
+                }
+    
+                // Then try to send email
+                const emailContent = `
+                    <h2>Resultados del Desafío Nike</h2>
+                    <p>Jugador: ${playerName}</p>
+                    <p>Tiempo Total: ${challengeResults.totalTime}</p>
+                    <p>Tiempos por desafío:</p>
+                    <ul>
+                        <li>Desafío 1: ${times[1]}</li>
+                        <li>Desafío 2: ${times[2]}</li>
+                        <li>Desafío 3: ${times[3]}</li>
+                    </ul>
+                `;
+    
+                await fetch('/api/sendEmail', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email,
+                        subject: 'Resultados del Desafío Nike',
+                        message: emailContent
+                    })
+                });
+    
+                alert('¡Datos guardados y email enviado correctamente!');
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Los datos fueron guardados. El email se enviará cuando haya conexión.');
+            } finally {
+                resetAllChallenges();  // Reset everything regardless of success/failure
+                showScreen('screen1'); // Return to first screen
+            }
+        }
+    
+        document.querySelector('#screen3 button:last-child').onclick = function() {
+            savePlayerData();
+        };
+    
+        function updateNetworkStatus() {
+            const indicator = document.querySelector('.status-indicator');
+            if (navigator.onLine) {
+                indicator.classList.add('online');
+                indicator.classList.remove('offline');
+            } else {
+                indicator.classList.add('offline');
+                indicator.classList.remove('online');
+            }
+        }
+    
+        window.addEventListener('online', updateNetworkStatus);
+        window.addEventListener('offline', updateNetworkStatus);
+        updateNetworkStatus();
+    </script>
+    
+    <div id="networkStatus" style="position: fixed; bottom: 10px; right: 10px;">
+        <span class="status-indicator"></span>
+    </div>
+    
+
+<!-- filepath: /Users/manuel/GIT/nike/nike-challenge/src/index.html -->
+<script>
+
+    /* filepath: /Users/manuel/GIT/nike/nike-challenge/src/index.html */
+/* Añadir esto al inicio del script principal, justo después de <script> */
+
+// Configurar la animación para el SVG
+var scrollAnimElements = document.querySelectorAll("[data-animate-on-scroll]");
+var observer = new IntersectionObserver(
+    (entries) => {
+        for (const entry of entries) {
+            if (entry.isIntersecting || entry.intersectionRatio > 0) {
+                const targetElement = entry.target;
+                targetElement.classList.add("animate");
+                observer.unobserve(targetElement);
+            }
+        }
+    },
+    {
+        threshold: 0.15,
+    }
+);
+
+// Inicializar la animación
+for (let i = 0; i < scrollAnimElements.length; i++) {
+    observer.observe(scrollAnimElements[i]);
+}
+
+// Variables para los desafíos
+let currentChallenge = 1;
+
+
+</script>
+
+
+    </body>
+    </html>

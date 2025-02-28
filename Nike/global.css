@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+  line-height: normal;
+}
+
+:root {
+  /* Fonts */
+  --font-drukwide-medium: DrukWide-Medium;
+
+  /* Colors */
+  --color-black: #000;
+  --color-yellow: #e1ff00;
+}

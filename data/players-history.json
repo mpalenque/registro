@@ -1,0 +1,764 @@
+[
+  {
+    "timestamp": "2025-02-23T00:54:08.410Z",
+    "playerData": {
+      "playerName": "adasd",
+      "email": "mpalenque3@gmail.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": []
+    },
+    "challengeResults": {
+      "times": {
+        "1": 0,
+        "2": "00:00:01.611",
+        "3": 0
+      },
+      "totalTime": "00:00:01.611"
+    }
+  },
+  {
+    "timestamp": "2025-02-23T00:55:22.223Z",
+    "playerData": {
+      "playerName": "ttttttttttttt",
+      "email": "mpalenque3@gmail.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": [
+        "running",
+        "training",
+        "lifestyle",
+        "basket"
+      ]
+    },
+    "challengeResults": {
+      "times": {
+        "1": "00:00:05.681",
+        "2": "00:00:01.611",
+        "3": 0
+      },
+      "totalTime": "00:00:07.291"
+    }
+  },
+  {
+    "timestamp": "2025-02-23T00:55:42.536Z",
+    "playerData": {
+      "playerName": "ooooooo",
+      "email": "mpalenque3@gmail.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": [
+        "running",
+        "training",
+        "lifestyle",
+        "basket"
+      ]
+    },
+    "challengeResults": {
+      "times": {
+        "1": "00:00:05.681",
+        "2": "00:00:01.611",
+        "3": 0
+      },
+      "totalTime": "00:00:07.291"
+    }
+  },
+  {
+    "timestamp": "2025-02-23T00:56:28.540Z",
+    "playerData": {
+      "playerName": "999999",
+      "email": "mpalenque3@gmail.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": [
+        "running",
+        "training",
+        "lifestyle",
+        "basket"
+      ]
+    },
+    "challengeResults": {
+      "times": {
+        "1": "00:00:00.961",
+        "2": "00:00:00.431",
+        "3": 0
+      },
+      "totalTime": "00:00:01.391"
+    }
+  },
+  {
+    "timestamp": "2025-02-23T00:57:21.718Z",
+    "playerData": {
+      "playerName": "1",
+      "email": "mpalenque3@gmail.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": [
+        "running",
+        "training",
+        "lifestyle",
+        "basket"
+      ]
+    },
+    "challengeResults": {
+      "times": {
+        "1": "00:00:00.961",
+        "2": "00:00:00.431",
+        "3": 0
+      },
+      "totalTime": "00:00:01.391"
+    }
+  },
+  {
+    "timestamp": "2025-02-23T01:00:46.619Z",
+    "playerData": {
+      "playerName": "qwe",
+      "email": "mpalenque@gmail.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": []
+    },
+    "challengeResults": {
+      "times": {
+        "1": "00:00:00.431",
+        "2": 0,
+        "3": 0
+      },
+      "totalTime": "00:00:00.431"
+    }
+  },
+  {
+    "timestamp": "2025-02-23T01:01:24.159Z",
+    "playerData": {
+      "playerName": "aca",
+      "email": "mpalenque3@gmail.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": []
+    },
+    "challengeResults": {
+      "times": {
+        "1": "00:00:00.431",
+        "2": "00:00:00.671",
+        "3": 0
+      },
+      "totalTime": "00:00:01.102"
+    }
+  },
+  {
+    "timestamp": "2025-02-23T01:06:35.532Z",
+    "playerData": {
+      "playerName": "asd",
+      "email": "mpalenque@gmail.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": []
+    },
+    "challengeResults": {
+      "times": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      },
+      "totalTime": "00:00:00.000"
+    }
+  },
+  {
+    "timestamp": "2025-02-23T01:07:18.137Z",
+    "playerData": {
+      "playerName": "asd",
+      "email": "mpalenque3@gmail.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": []
+    },
+    "challengeResults": {
+      "times": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      },
+      "totalTime": "00:00:00.000"
+    }
+  },
+  {
+    "timestamp": "2025-02-23T01:12:57.601Z",
+    "playerData": {
+      "playerName": "p",
+      "email": "mpalenque@gmail.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": []
+    },
+    "challengeResults": {
+      "times": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      },
+      "totalTime": "00:00:00.000"
+    }
+  },
+  {
+    "timestamp": "2025-02-23T01:13:46.042Z",
+    "playerData": {
+      "playerName": "2222222",
+      "email": "mpalenque3@gmail.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": []
+    },
+    "challengeResults": {
+      "times": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      },
+      "totalTime": "00:00:00.000"
+    }
+  },
+  {
+    "timestamp": "2025-02-23T01:17:43.175Z",
+    "playerData": {
+      "playerName": "33333",
+      "email": "mpalenque@gmail.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": []
+    },
+    "challengeResults": {
+      "times": {
+        "1": "00:00:00.810",
+        "2": 0,
+        "3": 0
+      },
+      "totalTime": "00:00:00.810"
+    }
+  },
+  {
+    "timestamp": "2025-02-23T01:18:08.964Z",
+    "playerData": {
+      "playerName": "33333",
+      "email": "mpalenque@gmail.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": []
+    },
+    "challengeResults": {
+      "times": {
+        "1": "00:00:00.810",
+        "2": 0,
+        "3": 0
+      },
+      "totalTime": "00:00:00.810"
+    }
+  },
+  {
+    "timestamp": "2025-02-23T01:18:24.510Z",
+    "playerData": {
+      "playerName": "33333",
+      "email": "mpalenque3@gmail.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": []
+    },
+    "challengeResults": {
+      "times": {
+        "1": "00:00:00.810",
+        "2": 0,
+        "3": 0
+      },
+      "totalTime": "00:00:00.810"
+    }
+  },
+  {
+    "timestamp": "2025-02-23T01:19:17.338Z",
+    "playerData": {
+      "playerName": "555555",
+      "email": "mpalenque3@gmail.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": []
+    },
+    "challengeResults": {
+      "times": {
+        "1": "00:00:00.810",
+        "2": 0,
+        "3": 0
+      },
+      "totalTime": "00:00:00.810"
+    }
+  },
+  {
+    "timestamp": "2025-02-23T01:25:33.031Z",
+    "playerData": {
+      "playerName": "Pabloo",
+      "email": "mpalenque@gmail.com",
+      "age": "mayor",
+      "nikeUsage": "si",
+      "interests": [
+        "training"
+      ]
+    },
+    "challengeResults": {
+      "times": {
+        "1": "00:00:05.166",
+        "2": "00:00:10.457",
+        "3": "-00:00:05.000"
+      },
+      "totalTime": "00:00:10.623"
+    }
+  },
+  {
+    "timestamp": "2025-02-23T01:47:10.534Z",
+    "playerData": {
+      "playerName": "asd",
+      "email": "mpalenque@gmail.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": []
+    },
+    "challengeResults": {
+      "times": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      },
+      "totalTime": "00:00:00.000"
+    }
+  },
+  {
+    "timestamp": "2025-02-23T01:54:19.684Z",
+    "playerData": {
+      "playerName": "asd",
+      "email": "mpalenque@gmail.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": []
+    },
+    "challengeResults": {
+      "times": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      },
+      "totalTime": "00:00:00.000"
+    }
+  },
+  {
+    "timestamp": "2025-02-23T01:55:29.932Z",
+    "playerData": {
+      "playerName": "asd",
+      "email": "mpalenque@gmail.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": []
+    },
+    "challengeResults": {
+      "times": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      },
+      "totalTime": "00:00:00.000"
+    }
+  },
+  {
+    "timestamp": "2025-02-23T01:57:30.379Z",
+    "playerData": {
+      "playerName": "asd",
+      "email": "mpalenque@gmail.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": [
+        "running"
+      ]
+    },
+    "challengeResults": {
+      "times": {
+        "1": "00:00:02.883",
+        "2": "23:59:58.517",
+        "3": 0
+      },
+      "totalTime": "24:00:01.400"
+    }
+  },
+  {
+    "timestamp": "2025-02-23T02:21:54.695Z",
+    "playerData": {
+      "playerName": "Manuel Palenque",
+      "email": "mpalenque@gmail.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": [
+        "running",
+        "training",
+        "lifestyle",
+        "basket"
+      ]
+    },
+    "challengeResults": {
+      "times": {
+        "1": "00:00:03.961",
+        "2": "00:00:00.530",
+        "3": 0
+      },
+      "totalTime": "00:00:04.490"
+    }
+  },
+  {
+    "timestamp": "2025-02-23T02:37:47.458Z",
+    "playerData": {
+      "playerName": "pronga",
+      "email": "mpalenque@gmail.com",
+      "age": "mayor",
+      "nikeUsage": "si",
+      "interests": [
+        "running"
+      ]
+    },
+    "challengeResults": {
+      "times": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      },
+      "totalTime": "00:00:00.000"
+    }
+  },
+  {
+    "timestamp": "2025-02-23T02:38:10.805Z",
+    "playerData": {
+      "playerName": "pronga",
+      "email": "mpalenque@gmail.com",
+      "age": "mayor",
+      "nikeUsage": "si",
+      "interests": [
+        "running"
+      ]
+    },
+    "challengeResults": {
+      "times": {
+        "1": "00:00:00.131",
+        "2": 0,
+        "3": 0
+      },
+      "totalTime": "00:00:00.131"
+    }
+  },
+  {
+    "timestamp": "2025-02-23T16:22:00.950Z",
+    "playerData": {
+      "playerName": "epa",
+      "email": "mpalenque@gmail.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": [
+        "running"
+      ]
+    },
+    "challengeResults": {
+      "times": {
+        "1": "00:00:05.266",
+        "2": "00:00:07.316",
+        "3": "-00:00:05.000"
+      },
+      "totalTime": "00:00:07.582"
+    }
+  },
+  {
+    "timestamp": "2025-02-23T16:45:23.184Z",
+    "playerData": {
+      "playerName": "epa",
+      "email": "mpalenque@gmail.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": [
+        "running",
+        "training",
+        "lifestyle",
+        "basket"
+      ]
+    },
+    "challengeResults": {
+      "times": {
+        "1": "00:00:04.691",
+        "2": "00:00:11.841",
+        "3": "00:00:00.000"
+      },
+      "totalTime": "00:00:16.532"
+    }
+  },
+  {
+    "timestamp": "2025-02-23T16:56:42.763Z",
+    "playerData": {
+      "playerName": "opaaa",
+      "email": "asd@asd.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": [
+        "running"
+      ]
+    },
+    "challengeResults": {
+      "times": {
+        "1": "00:00:01.118",
+        "2": "00:00:01.382",
+        "3": 0
+      },
+      "totalTime": "00:00:02.500"
+    }
+  },
+  {
+    "timestamp": "2025-02-23T16:57:22.211Z",
+    "playerData": {
+      "playerName": "asd masd ",
+      "email": "mpalenque@gmail.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": [
+        "running"
+      ]
+    },
+    "challengeResults": {
+      "times": {
+        "1": "00:00:05.691",
+        "2": "00:00:03.881",
+        "3": 0
+      },
+      "totalTime": "00:00:09.571"
+    }
+  },
+  {
+    "timestamp": "2025-02-23T21:10:45.751Z",
+    "playerData": {
+      "playerName": "sd",
+      "email": "asd@asd.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": [
+        "running"
+      ]
+    },
+    "challengeResults": {
+      "times": {
+        "1": "00:00:00.000",
+        "2": "00:00:00.000",
+        "3": "00:00:00.000"
+      },
+      "totalTime": "00:00:00.000"
+    }
+  },
+  {
+    "timestamp": "2025-02-23T21:18:41.689Z",
+    "playerData": {
+      "playerName": "zxc",
+      "email": "asd@asd.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": [
+        "lifestyle"
+      ]
+    },
+    "challengeResults": {
+      "times": {
+        "1": "00:00:35.981",
+        "2": "00:00:04.347",
+        "3": "-00:00:15.000"
+      },
+      "totalTime": "00:00:25.328"
+    }
+  },
+  {
+    "timestamp": "2025-02-23T21:49:02.103Z",
+    "playerData": {
+      "playerName": "m ,",
+      "email": "lkm@asd.xcom",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": [
+        "lifestyle"
+      ]
+    },
+    "challengeResults": {
+      "times": {
+        "1": "00:00:01.215",
+        "2": "00:00:07.481",
+        "3": "-00:00:05.000"
+      },
+      "totalTime": "00:00:03.695"
+    }
+  },
+  {
+    "timestamp": "2025-02-24T14:44:57.781Z",
+    "playerData": {
+      "playerName": "asd",
+      "email": "asd@asd.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": []
+    },
+    "challengeResults": {
+      "times": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      },
+      "totalTime": "00:00:00.000"
+    }
+  },
+  {
+    "timestamp": "2025-02-25T03:16:13.298Z",
+    "playerData": {
+      "playerName": "asd",
+      "email": "asd@gasd.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": []
+    },
+    "challengeResults": {
+      "times": {
+        "1": "00:00:16.182",
+        "2": 0,
+        "3": 0
+      },
+      "totalTime": "00:00:16.181"
+    }
+  },
+  {
+    "timestamp": "2025-02-25T03:17:47.251Z",
+    "playerData": {
+      "playerName": "asd",
+      "email": "mpalenque@gmail.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": [
+        "basket"
+      ]
+    },
+    "challengeResults": {
+      "times": {
+        "1": "00:00:01.370",
+        "2": "00:00:01.091",
+        "3": "00:00:00.000"
+      },
+      "totalTime": "00:00:02.461"
+    }
+  },
+  {
+    "timestamp": "2025-02-25T03:29:22.902Z",
+    "playerData": {
+      "playerName": "asd",
+      "email": "mpalenque@gmail.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": [
+        "training"
+      ]
+    },
+    "challengeResults": {
+      "times": {
+        "1": "00:00:01.091",
+        "2": "00:00:00.321",
+        "3": "00:00:00.000"
+      },
+      "totalTime": "00:00:01.411"
+    }
+  },
+  {
+    "timestamp": "2025-02-25T04:20:18.398Z",
+    "playerData": {
+      "playerName": "asd",
+      "email": "asd@asd.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": []
+    },
+    "challengeResults": {
+      "times": {
+        "1": "00:00:06.648",
+        "2": "00:00:07.565",
+        "3": "-00:00:05.000"
+      },
+      "totalTime": "00:00:09.212"
+    }
+  },
+  {
+    "timestamp": "2025-02-27T08:19:24.247Z",
+    "playerData": {
+      "playerName": "sd",
+      "email": "asd@asd.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": [
+        "running"
+      ]
+    },
+    "challengeResults": {
+      "times": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      },
+      "totalTime": "00:00:00.000"
+    }
+  },
+  {
+    "timestamp": "2025-02-27T08:43:02.939Z",
+    "playerData": {
+      "playerName": "sd",
+      "email": "sd@sdwf.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": [
+        "basket"
+      ]
+    },
+    "challengeResults": {
+      "times": {
+        "1": 0,
+        "2": "00:00:00.762",
+        "3": 0
+      },
+      "totalTime": "00:00:00.762"
+    }
+  },
+  {
+    "timestamp": "2025-02-28T18:28:10.197Z",
+    "playerData": {
+      "playerName": "asd",
+      "email": "asd@asd.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": [
+        "lifestyle"
+      ]
+    },
+    "challengeResults": {
+      "times": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      },
+      "totalTime": "00:00:00.000"
+    }
+  },
+  {
+    "timestamp": "2025-02-28T18:28:29.599Z",
+    "playerData": {
+      "playerName": "asd",
+      "email": "mpalenque@gmail.com",
+      "age": "menor",
+      "nikeUsage": "si",
+      "interests": []
+    },
+    "challengeResults": {
+      "times": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      },
+      "totalTime": "00:00:00.000"
+    }
+  }
+]
